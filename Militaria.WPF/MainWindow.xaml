@@ -1,0 +1,36 @@
+﻿<Window x:Class="Militaria.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Militaria.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        xmlns:vm="clr-namespace:Militaria.WPF.ViewModels"
+        xmlns:converter="clr-namespace:Militaria.WPF.Convrters"
+        d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
+        >
+    <Window.Resources>
+        <converter:NazwaPoziomColorConverter x:Key="ColorConv"/>
+    </Window.Resources>
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" x:Name="mydatagrid"
+                  ItemsSource="{Binding Dane, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" EnableRowVirtualization="True" EnableColumnVirtualization="True">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="{Binding NazwaPoziom, Converter={StaticResource ResourceKey=ColorConv}}"/>
+                </Style>
+            </DataGrid.RowStyle>
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" d:Header="dupa" Binding="{Binding Id}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="nazwa" Binding="{Binding Nazwa}"/>
+                <DataGridTextColumn Header="id nadrzedny element" Binding="{Binding IdNadrzednyElement}"/>
+                <DataGridTextColumn Header="id poziom" Binding="{Binding IdPoziom}"/>
+                <DataGridTextColumn Header="nazwa poziom" Binding="{Binding NazwaPoziom}"/>
+                <DataGridTextColumn Header="czy zmienne" Binding="{Binding CzyZmienne}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

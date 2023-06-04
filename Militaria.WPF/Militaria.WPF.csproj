@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI" Version="18.4.44" />
+    <PackageReference Include="ReactiveUI.WPF" Version="18.4.44" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Militaria.Gus\Militaria.Gus.csproj" />
+  </ItemGroup>
+
+</Project>
